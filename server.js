@@ -72,7 +72,10 @@ app.post('/api/users', [
             // Create JWT payload
             const payload = {
                 user: {
-                    id: user.id
+                    //id: user.id
+                    id: user.id,
+                   name: user.name
+
                 }
             };
 
@@ -132,7 +135,10 @@ app.post('/api/auth', [
             // Create JWT payload
             const payload = {
                 user: {
-                    id: user.id
+                    //id: user.id
+                    id: user.id,
+                    name: user.name
+
                 }
             };
 
