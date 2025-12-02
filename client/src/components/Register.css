@@ -1,24 +1,29 @@
 .register-form {
   max-width: 450px;
   margin: 0 auto;
-  background: white;
+  background: var(--bg);
+  color: var(--text);
   padding: 2.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
+/* Title */
 .register-form h2 {
   margin: 0 0 0.5rem 0;
-  color: #282c34;
+  color: var(--text);
   font-size: 2rem;
 }
 
+/* Subtitle */
 .register-subtitle {
   margin: 0 0 2rem 0;
-  color: #666;
+  color: var(--text);
+  opacity: 0.7;
   font-size: 1rem;
 }
 
+/* Form Groups */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -26,18 +31,21 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #282c34;
+  color: var(--text);
   font-weight: 500;
   font-size: 0.95rem;
 }
 
+/* Inputs */
 .form-group input {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #e0e0e0;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--text);
   border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus {
@@ -49,6 +57,7 @@
   border-color: #d32f2f;
 }
 
+/* Error messages */
 .field-error {
   display: block;
   color: #d32f2f;
@@ -57,7 +66,7 @@
 }
 
 .error-message {
-  background-color: #ffebee;
+  background-color: rgba(255, 0, 0, 0.1);
   color: #c62828;
   padding: 0.75rem;
   border-radius: 4px;
@@ -65,24 +74,29 @@
   border-left: 4px solid #d32f2f;
 }
 
+/* Submit button */
 .submit-button {
   width: 100%;
   padding: 0.875rem;
-  background-color: #61dafb;
-  color: #282c34;
-  border: none;
+  background-color: var(--text); /* inverted theme */
+  color: var(--bg);
+  border: 1px solid var(--text);
   border-radius: 4px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: #21a1c4;
+  background-color: var(--bg);
+  color: var(--text);
+  border-color: var(--text);
 }
 
 .submit-button:disabled {
-  background-color: #b0b0b0;
+  background-color: #777;
+  color: #ccc;
+  border-color: #555;
   cursor: not-allowed;
 }

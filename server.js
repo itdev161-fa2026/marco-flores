@@ -165,11 +165,20 @@ app.post('/api/auth', [
 
 /**
  * @route   GET api/posts
- * @desc    Get all posts
+ * @desc    Get all posts (with optional category filter)
  */
 app.get("/api/posts", async (req, res) => {
   try {
-    const posts = await Post.find()
+    const { category } = req.query;
+
+    let filter = {};
+
+    // If a category is selected, filter by it
+    if (category && category !== "All") {
+      filter.category = category;
+    }
+
+    const posts = await Post.find(filter)
       .populate("user", "name")
       .sort({ createDate: -1 });
 
@@ -179,6 +188,7 @@ app.get("/api/posts", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
 
 /**
  * @route   GET api/posts/:id
@@ -212,6 +222,7 @@ app.post(
     auth,
     check("title", "Title is required").not().isEmpty(),
     check("body", "Body is required").not().isEmpty(),
+    check("category", "Category is required").not().isEmpty(), // NEW
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -220,17 +231,17 @@ app.post(
     }
 
     try {
-      const { title, body } = req.body;
+      const { title, body, category } = req.body;
 
       const newPost = new Post({
         user: req.user.id,
         title,
         body,
+        category, // NEW: store category
       });
 
       const post = await newPost.save();
 
-      // Populate user data before returning
       await post.populate("user", "name");
 
       res.json(post);
@@ -240,6 +251,7 @@ app.post(
     }
   }
 );
+
 
 /**
  * @route   PUT api/posts/:id
@@ -251,6 +263,7 @@ app.put(
     auth,
     check("title", "Title is required").not().isEmpty(),
     check("body", "Body is required").not().isEmpty(),
+    check("category", "Category is required").not().isEmpty(), // NEW
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -259,7 +272,7 @@ app.put(
     }
 
     try {
-      const { title, body } = req.body;
+      const { title, body, category } = req.body;
 
       const post = await Post.findById(req.params.id);
 
@@ -267,13 +280,13 @@ app.put(
         return res.status(404).json({ msg: "Post not found" });
       }
 
-      // Check if user owns the post
       if (post.user.toString() !== req.user.id) {
         return res.status(401).json({ msg: "User not authorized" });
       }
 
       post.title = title;
       post.body = body;
+      post.category = category; // NEW
 
       await post.save();
       await post.populate("user", "name");
@@ -288,6 +301,7 @@ app.put(
     }
   }
 );
+
 
 /**
  * @route   DELETE api/posts/:id

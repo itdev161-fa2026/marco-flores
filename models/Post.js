@@ -6,15 +6,24 @@ const PostSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+
   title: {
     type: String,
     required: true,
     trim: true,
   },
+
   body: {
     type: String,
     required: true,
   },
+
+  //  required category for each post
+  category: {
+    type: String,
+    required: true,
+  },
+
   createDate: {
     type: Date,
     default: Date.now,

@@ -1,71 +1,116 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-  .home-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-    margin-bottom: 2rem;
-  }
+/* Header */
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
 
-  .home-header h1 {
-    color: #282c34;
-    margin: 0;
-  }
+.home-header h1 {
+  color: var(--text);
+  margin: 0;
+}
 
- .create-post-button {
-   padding: 0.75rem 1.5rem;
-   background-color: #61dafb;
-   color: #282c34;
-   border: none;
-   border-radius: 4px;
-   font-size: 1rem;
-   font-weight: 600;
-   cursor: pointer;
-   transition: background-color 0.3s;
- }
+/* Create Post Button */
+.create-post-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
 
- .create-post-button:hover {
-  background-color: #21a1c4;
- }
+.create-post-button:hover {
+  background-color: var(--bg);
+  color: var(--text);
+  border-color: var(--text);
+}
 
-  .auth-message {
-    color: #666;
-    font-size: 1rem;
-    margin: 0;
-  }
+/* ----------------------------------
+   CATEGORY FILTER STYLING
+---------------------------------- */
+.category-filter {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text);
+}
 
-  .auth-message a {
-    color: #61dafb;
-    text-decoration: none;
-    font-weight: 600;
-  }
+.category-filter label {
+  font-size: 1rem;
+  font-weight: 600;
+}
 
-  .auth-message a:hover {
-    text-decoration: underline;
-  }
+.category-filter select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid var(--text);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  .loading,
-  .error {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-top: 3rem;
-  }
+.category-filter select:hover {
+  border-color: #61dafb;
+}
 
-  .error {
-    color: #d32f2f;
-  }
+.category-filter select:focus {
+  outline: none;
+  border-color: #61dafb;
+}
 
-  .no-posts {
-    text-align: center;
-    margin-top: 3rem;
-    color: #666;
-  }
+/* Auth message */
+.auth-message {
+  color: var(--text);
+  font-size: 1rem;
+  margin: 0;
+}
 
-  .posts-list {
-    display: flex;
-    flex-direction: column;
-  }
+.auth-message a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-message a:hover {
+  text-decoration: underline;
+}
+
+/* Loading & Error */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+  color: var(--text);
+}
+
+.error {
+  color: #d32f2f;
+}
+
+/* No Posts */
+.no-posts {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--text);
+}
+
+/* Posts List */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+}

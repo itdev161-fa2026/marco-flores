@@ -1,18 +1,22 @@
 .edit-post-page {
   min-height: calc(100vh - 80px);
   padding: 2rem 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
+/* Error Message Box */
 .error-message {
   max-width: 800px;
   margin: 0 auto 1.5rem;
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: rgba(211, 47, 47, 0.15); /* works for both themes */
+  color: #ff6b6b;
   padding: 0.75rem;
   border-radius: 4px;
   border-left: 4px solid #d32f2f;
 }
 
+/* Back Button */
 .back-button {
   background: none;
   border: none;

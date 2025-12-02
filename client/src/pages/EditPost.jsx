@@ -9,18 +9,19 @@ const EditPost = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
+  // Load post
   useEffect(() => {
     const fetchPost = async () => {
       try {
         setLoading(true);
         const data = await getPostById(id);
 
-        // Verify user owns the post
         if (user && data.user._id !== user.id) {
           setError("You don't have permission to edit this post.");
           setLoading(false);
@@ -39,14 +40,14 @@ const EditPost = () => {
     fetchPost();
   }, [id, user]);
 
-  const handleSubmit = async (title, body) => {
+  // Accept category from PostForm
+  const handleSubmit = async (title, body, category) => {
     try {
       setError(null);
       setSubmitting(true);
 
-      await updatePost(id, title, body);
+      await updatePost(id, title, body, category);
 
-      // Navigate to the updated post
       navigate(`/posts/${id}`);
     } catch (err) {
       const errorMsg =
@@ -58,9 +59,7 @@ const EditPost = () => {
     }
   };
 
-  const handleCancel = () => {
-    navigate(`/posts/${id}`);
-  };
+  const handleCancel = () => navigate(`/posts/${id}`);
 
   if (loading) {
     return <div className="container loading">Loading post...</div>;
@@ -80,11 +79,8 @@ const EditPost = () => {
   return (
     <div className="edit-post-page">
       <div className="container">
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
+        {error && <div className="error-message">{error}</div>}
+
         <PostForm
           mode="edit"
           initialData={post}

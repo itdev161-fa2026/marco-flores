@@ -1,6 +1,6 @@
 .header {
-  background-color: #282c34;
-  color: white;
+  background-color: var(--bg);
+  color: var(--text);
   padding: 1rem 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -15,7 +15,7 @@
 }
 
 .header-title {
-  color: white;
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .nav-link {
-  color: white;
+  color: var(--text);
   text-decoration: none;
   font-size: 1.1rem;
   transition: color 0.3s;
@@ -49,8 +49,8 @@
 
 .nav-button {
   background-color: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--text);
+  border: 2px solid var(--text);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   font-size: 1rem;
@@ -60,6 +60,13 @@
 }
 
 .nav-button:hover {
-  background-color: white;
-  color: #282c34;
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+.theme-toggle {
+  margin-left: 1rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
