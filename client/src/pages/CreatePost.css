@@ -1,14 +1,24 @@
 .create-post-page {
   min-height: calc(100vh - 80px);
   padding: 2rem 0;
+  transition: background 0.3s, color 0.3s;
 }
 
+/* Error box adapts to both themes */
 .error-message {
   max-width: 800px;
   margin: 0 auto 1.5rem;
-  background-color: #ffebee;
+  background-color: rgba(255, 235, 238, 0.8); /* light red bg */
   color: #c62828;
   padding: 0.75rem;
   border-radius: 4px;
   border-left: 4px solid #d32f2f;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode error box override */
+.dark .error-message {
+  background-color: rgba(60, 0, 0, 0.6);
+  color: #ffb3b3;
+  border-left-color: #ff8a80;
 }

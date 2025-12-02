@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000/api';
 
-// Create axios instance
+// Axios instance
 const api = axios.create({
   baseURL: API_URL,
 });
 
-// Add request interceptor to include auth token
+// Add auth token automatically
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -16,17 +16,14 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Add response interceptor to handle 401 errors
+// Auto-logout on 401
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token invalid or expired, clear it
       localStorage.removeItem('token');
       window.location.href = '/login';
     }
@@ -34,79 +31,60 @@ api.interceptors.response.use(
   }
 );
 
-// Authentication API calls
+// ----------------------
+// AUTH
+// ----------------------
 export const registerUser = async (name, email, password) => {
-  try {
-    const response = await api.post('/users', { name, email, password });
-    return response.data;
-  } catch (error) {
-    console.error('Error registering user:', error);
-    throw error;
-  }
+  const res = await api.post('/users', { name, email, password });
+  return res.data;
 };
 
 export const loginUser = async (email, password) => {
-  try {
-    const response = await api.post('/auth', { email, password });
-    return response.data;
-  } catch (error) {
-    console.error('Error logging in:', error);
-    throw error;
-  }
+  const res = await api.post('/auth', { email, password });
+  return res.data;
 };
 
-// Get all posts
-export const getPosts = async () => {
-  try {
-    const response = await api.get('/posts');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    throw error;
-  }
+// ----------------------
+// POSTS API
+// ----------------------
+
+// GET posts with optional category filter
+export const getPosts = async (category = null) => {
+  const params = {};
+  if (category && category !== "All") params.category = category;
+
+  const res = await api.get('/posts', { params });
+  return res.data;
 };
 
-// Get single post by ID
+// GET single post
 export const getPostById = async (id) => {
-  try {
-    const response = await api.get(`/posts/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching post:', error);
-    throw error;
-  }
+  const res = await api.get(`/posts/${id}`);
+  return res.data;
 };
 
-// Create a new post
-export const createPost = async (title, body) => {
-  try {
-    const response = await api.post('/posts', { title, body });
-    return response.data;
-  } catch (error) {
-    console.error('Error creating post:', error);
-    throw error;
-  }
+// CREATE post (now includes category)
+export const createPost = async (title, body, category) => {
+  const res = await api.post('/posts', {
+    title,
+    body,
+    category,
+  });
+  return res.data;
 };
 
-// Update a post
-export const updatePost = async (id, title, body) => {
-  try {
-    const response = await api.put(`/posts/${id}`, { title, body });
-    return response.data;
-  } catch (error) {
-    console.error('Error updating post:', error);
-    throw error;
-  }
+// UPDATE post (now includes category)
+export const updatePost = async (id, title, body, category) => {
+  const res = await api.put(`/posts/${id}`, {
+    title,
+    body,
+    category,
+  });
+  return res.data;
 };
 
-// Delete a post
+// DELETE post
 export const deletePost = async (id) => {
-  try {
-    const response = await api.delete(`/posts/${id}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error deleting post:', error);
-    throw error;
-  }
+  const res = await api.delete(`/posts/${id}`);
+  return res.data;
 };
-

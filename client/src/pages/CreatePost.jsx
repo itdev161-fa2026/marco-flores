@@ -11,14 +11,14 @@ const CreatePost = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (title, body) => {
+  // Updated to accept category
+  const handleSubmit = async (title, body, category) => {
     try {
       setError(null);
       setLoading(true);
 
-      const newPost = await createPost(title, body);
+      const newPost = await createPost(title, body, category);
 
-      // Navigate to the new post
       navigate(`/posts/${newPost._id}`);
     } catch (err) {
       const errorMsg =
@@ -30,18 +30,12 @@ const CreatePost = () => {
     }
   };
 
-  const handleCancel = () => {
-    navigate('/');
-  };
+  const handleCancel = () => navigate('/');
 
   return (
     <div className="create-post-page">
       <div className="container">
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
+        {error && <div className="error-message">{error}</div>}
         <PostForm
           mode="create"
           onSubmit={handleSubmit}

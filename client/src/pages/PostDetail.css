@@ -1,95 +1,134 @@
 .post-detail {
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
 
-  .post-detail h1 {
-    color: #282c34;
-    margin: 0 0 1rem 0;
-    font-size: 2.5rem;
-    line-height: 1.2;
-  }
+/* Header row: title + category badge */
+.post-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
 
-  .post-detail-meta {
-    display: flex;
-    gap: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #f0f0f0;
-    color: #666;
-  }
+/* Category badge */
+.post-detail-category-badge {
+  background-color: #61dafb;
+  color: #282c34;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
 
-  .post-detail-author {
-    font-weight: 600;
-    color: #282c34;
-  }
+/* Dark mode category badge */
+.dark .post-detail-category-badge {
+  background-color: #21a1c4;
+  color: white;
+}
 
-  .post-detail-body {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #444;
-   margin-bottom: 2rem;
-  }
+/* Title */
+.post-detail h1 {
+  color: var(--text);
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
 
-  .post-detail-body p {
-    margin-bottom: 1rem;
-  }
+/* Meta section */
+.post-detail-meta {
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--text);
+  opacity: 0.7;
+  color: var(--text);
+}
 
- .post-actions {
-   display: flex;
-   gap: 1rem;
-   padding-top: 2rem;
-   border-top: 2px solid #f0f0f0;
- }
+.post-detail-author {
+  font-weight: 600;
+  color: var(--text);
+}
 
- .edit-button {
-   padding: 0.75rem 1.5rem;
-   background-color: #61dafb;
-   color: #282c34;
-   border: none;
+/* Body text */
+.post-detail-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.post-detail-body p {
+  margin-bottom: 1rem;
+}
+
+/* Post Actions */
+.post-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--text);
+  opacity: 0.9;
+}
+
+/* Edit button */
+.edit-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
   border-radius: 4px;
-   font-size: 1rem;
-   font-weight: 600;
-   cursor: pointer;
-   transition: background-color 0.3s;
- }
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
- .edit-button:hover {
-   background-color: #21a1c4;
- }
+.edit-button:hover {
+  background-color: var(--bg);
+  color: var(--text);
+  border-color: var(--text);
+}
 
- .delete-button {
-   padding: 0.75rem 1.5rem;
-   background-color: transparent;
-   color: #d32f2f;
-   border: 2px solid #d32f2f;
-   border-radius: 4px;
-   font-size: 1rem;
-   font-weight: 600;
-   cursor: pointer;
-   transition: all 0.3s;
- }
+/* Delete button */
+.delete-button {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #d32f2f;
+  border: 2px solid #d32f2f;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
- .delete-button:hover {
-   background-color: #d32f2f;
-   color: white;
- }
+.delete-button:hover {
+  background-color: #d32f2f;
+  color: white;
+}
 
-  .back-button {
-    background: none;
-    border: none;
-    color: #61dafb;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
+/* Back button */
+.back-button {
+  background: none;
+  border: none;
+  color: #61dafb;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 500;
+  transition: color 0.3s;
+}
 
-  .back-button:hover {
-    color: #21a1c4;
-    text-decoration: underline;
-  }
+.back-button:hover {
+  color: #21a1c4;
+  text-decoration: underline;
+}

@@ -1,47 +1,80 @@
 .post-card {
-  background: white;
+  background: var(--bg);
+  color: var(--text);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .post-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
 .post-card-link {
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
   display: block;
 }
 
+/* Title */
 .post-card h2 {
-  margin: 0 0 0.5rem 0;
-  color: #282c34;
-  font-size: 1.5rem;
+  margin: 0;
+  color: var(--text);
+  font-size: 1.4rem;
 }
 
+/* Header row: title + category badge */
+.post-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Category badge */
+.post-category-badge {
+  background-color: #61dafb;
+  color: #282c34;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+/* Dark mode badge */
+.dark .post-category-badge {
+  background-color: #21a1c4;
+  color: white;
+}
+
+/* Meta section */
 .post-meta {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text);
+  opacity: 0.7;
 }
 
 .post-author {
   font-weight: 600;
 }
 
+/* Preview text */
 .post-preview {
-  color: #444;
+  color: var(--text);
+  opacity: 0.9;
   line-height: 1.6;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
+/* Read more link */
 .read-more {
   color: #61dafb;
   font-weight: 500;
